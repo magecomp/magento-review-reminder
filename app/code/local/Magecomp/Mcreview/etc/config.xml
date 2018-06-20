@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<config>
+ 	<modules>
+    	<Magecomp_Mcreview>
+      		<version>1.0.0</version>
+    	</Magecomp_Mcreview>
+  	</modules>
+	
+	<frontend>
+		<routers>
+            <mcreview>
+                <use>standard</use>
+                <args>
+                    <module>Magecomp_Mcreview</module>
+                    <frontName>mcreview</frontName>
+                </args>
+            </mcreview>
+        </routers>
+	</frontend>
+	
+	<global>
+    	<models>
+	  		<mcreview>
+				<class>Magecomp_Mcreview_Model</class>
+			</mcreview>
+		</models>
+		
+		<template>
+            <email>
+                <mcreview_general_adminemailtemplate translate="label" module="mcreview">
+                    <label>Magecopm Review Email</label>
+                    <file>mcreview.html</file>
+                    <type>html</type>
+                </mcreview_general_adminemailtemplate>
+            </email>
+        </template>
+
+  	</global>
+  
+  	<default>
+		<mcreview>
+			<general>
+				<enable>1</enable>
+				<custom_identity>general</custom_identity>
+                <adminemailtemplate>mcreview_general_adminemailtemplate</adminemailtemplate>
+			</general>
+		</mcreview>
+	</default>
+	
+	<crontab>
+        <jobs>
+            <mcreview_sendmail>
+                <schedule><cron_expr>0 15 * * *</cron_expr></schedule>
+                <run><model>mcreview/observer::sendReviewmail</model></run>
+            </mcreview_sendmail>
+        </jobs>
+    </crontab>
+	
+</config> 

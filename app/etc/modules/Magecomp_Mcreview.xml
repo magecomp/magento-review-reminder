@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Magecomp_Mcreview>
+      <active>true</active>
+      <codePool>local</codePool>
+    </Magecomp_Mcreview>
+  </modules>
+</config>
